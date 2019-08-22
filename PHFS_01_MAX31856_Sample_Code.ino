@@ -1,5 +1,5 @@
-#include <Adafruit_MAX31856.h>
-#define DATA_POINTS 300//number of readings 
+#include <Adafruit_MAX31856.h> // Download library: https://learn.adafruit.com/adafruit-max31856-thermocouple-amplifier/wiring-and-test
+#define DATA_POINTS 300 //number of readings 
 
 Adafruit_MAX31856 amp_01 = Adafruit_MAX31856(2, 3, 4, 5);
 Adafruit_MAX31856 amp_02 = Adafruit_MAX31856(6, 7, 8, 9);
@@ -52,8 +52,8 @@ void loop() {
        * readThermocoupleTemperature() = read temp at thermocouple joint
        * readCJTemperature() = read temp at chip (reference temperature)
        * 
-       * for Voltage mode with #-gain (8 or 32):
-       * readThermocoupleTemperature()/(.0078125*pow(2,17)*32*1.6)
+       * for Voltage mode with x-gain (only 8 or 32):
+       * readThermocoupleTemperature()/(.0078125*pow(2,17)*x*1.6)
        * 
        */
       
@@ -70,7 +70,7 @@ void loop() {
         Serial.print("\t");
       }
       Serial.println();
-      delay(243);
+      delay(1000);// this needs to be adjusted for processing times; recommend RTC instead
     }
   }
 }
